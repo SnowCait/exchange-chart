@@ -1,0 +1,19 @@
+name: Post
+
+on:
+  schedule:
+    - cron: 0 9 * * *
+  workflow_dispatch:
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - run: echo "today=$(date '+%Y-%m-%d')" >> $GITHUB_ENV
+      - uses: snow-actions/nostr@v1.7.0
+        with:
+          private-key: ${{ secrets.NOSTR_NSEC }}
+          relays: ${{ vars.NOSTR_RELAYS }}
+          kind: 1
+          content: https://exchange-chart.deno.dev/btc_jpy/${{ env.today }}.png
