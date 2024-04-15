@@ -1,0 +1,8 @@
+{
+  "name": "BTC/JPY",
+  "display_name": "BTC/JPY",
+  "about": "GitHub: https://github.com/SnowCait/exchange-chart",
+  "picture": "https://robohash.org/npub1k85xlsgh2f29htk45pwjw7zqtdr233up7zta59wcxy9vaxq3cgsqfauhu5?set=set4",
+  "nip05": "btc_jpy@snowcait.github.io",
+  "bot": true
+}
