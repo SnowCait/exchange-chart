@@ -20,6 +20,8 @@ const supportedPairs = [
   "wbtc_jpy",
 ];
 
+console.log("[env]", Deno.env.toObject());
+
 export const handler: Handlers = {
   async GET(_, { params, renderNotFound }) {
     console.log("[chart]", params);
