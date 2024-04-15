@@ -11,6 +11,8 @@ jobs:
     timeout-minutes: 5
     steps:
       - run: echo "today=$(date '+%Y-%m-%d')" >> $GITHUB_ENV
+        env:
+          TZ: Asia/Tokyo
       - uses: snow-actions/nostr@v1.7.0
         with:
           private-key: ${{ secrets.NOSTR_NSEC }}
