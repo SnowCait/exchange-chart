@@ -27,6 +27,7 @@ export const handler: Handlers = {
     console.log("[chart]", params);
     const { pair, date } = params;
     const today = new Date(date.replace(/\.(png|svg)$/, ""));
+    today.setHours(today.getHours() - 9);
     if (!supportedPairs.includes(pair) || Number.isNaN(today.getTime())) {
       console.error("[invalid params]", params);
       return renderNotFound();
