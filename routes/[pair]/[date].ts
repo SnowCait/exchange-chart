@@ -92,17 +92,22 @@ export const handler: Handlers = {
       }
     }
 
+    const sortedData = [...data].toSorted(([timeX], [timeY]) =>
+      new Date(timeX).getTime() - new Date(timeY).getTime()
+    );
+    console.log("[data]", sortedData);
+
     const svg = chart({
       type: "line",
       data: {
-        labels: [...data.keys()].reverse().map((time) => {
+        labels: sortedData.map(([time]) => {
           const date = new Date(time);
           return `${date.getMonth() + 1}/${date.getDate()}`;
         }),
         datasets: [
           {
             label: `${pair} (${today.toLocaleDateString("ja")})`,
-            data: [...data].reverse().map(([, rate]) => Number(rate)),
+            data: sortedData.map(([, rate]) => Number(rate)),
             borderColor: ChartColors.Blue,
             backgroundColor: transparentize(ChartColors.Blue, 0.5),
             borderWidth: 1,
